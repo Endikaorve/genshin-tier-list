@@ -1,10 +1,45 @@
+:root {
+  --color-white: #ffffff;
+
+  --color-tiers-s: #fe7676;
+  --color-tiers-a: #ffc48a;
+  --color-tiers-b: #efcb56;
+  --color-tiers-c: #64e477;
+  --color-tiers-d: #74bcec;
+  --color-tiers-e: #976abf;
+  --color-tiers-f: #a8a8a8;
+
+  --color-elements-pyro: rgb(254, 146, 93);
+  --color-elements-pyro-light: rgba(254, 146, 93, 0.6);
+  --color-elements-hydro: rgb(33, 225, 235);
+  --color-elements-hydro-light: rgba(33, 225, 235, 0.6);
+  --color-elements-anemo: rgb(114, 226, 195);
+  --color-elements-anemo-light: rgba(114, 226, 195, 0.6);
+  --color-elements-electro: rgb(167, 87, 203);
+  --color-elements-electro-light: rgba(167, 87, 203, 0.6);
+  --color-elements-dendro: rgb(35, 193, 138);
+  --color-elements-dendro-light: rgba(35, 193, 138, 0.6);
+  --color-elements-cryo: rgb(160, 233, 229);
+  --color-elements-cryo-light: rgba(160, 233, 229, 0.6);
+  --color-elements-geo: rgb(227, 179, 66);
+  --color-elements-geo-light: rgba(227, 179, 66, 0.6);
+
+  --background-color: rgb(0, 0, 0); /* #f7f8f9; */
+
+  --space-md: 8px;
+  --space-lg: 16px;
+
+  --border-radius: 10px;
+
+  --font-family: 'Manrope', sans-serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--color-black);
-  color: var(--text-color-primary);
-  font-family: 'Manrope', sans-serif;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
 }
 
 p {
