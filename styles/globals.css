@@ -1,0 +1,19 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-black);
+  color: var(--text-color-primary);
+  font-family: 'Manrope', sans-serif;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf')
+    format('truetype-variations');
+  font-weight: 1 999;
+}
