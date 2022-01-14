@@ -3,8 +3,11 @@ import styled from 'styled-components';
 
 import Head from 'next/head';
 
-import Modal from 'components/atoms/Modal/Modal';
 import { useState } from 'react';
+
+import Modal from 'components/atoms/Modal/Modal';
+import Container from 'components/atoms/Container/Container';
+import CharacterCard from 'components/molecules/CharacterCard/CharacterCard';
 
 interface Patch {
   name: string;
@@ -105,7 +108,7 @@ const Team = ({ team }: any) => {
     <TeamContainer>
       <TeamCharactersContainer>
         {team.characters.map((character: any, index: any) => (
-          <Character key={index} character={character}></Character>
+          <CharacterCard key={index} character={character} />
         ))}
       </TeamCharactersContainer>
       <TeamTitle
@@ -133,57 +136,9 @@ const TeamModal = ({ team, isShown, hideModal }: any) => {
   );
 };
 
-const Character = ({ character }: any) => {
-  const { name, element, alternatives } = character;
-  const src: string = `/assets/images/characters/${name}.png`;
-  const elementSrc = `/assets/images/elements/${element}.png`;
-  const alt: string = name.toLowerCase();
-  const size: number = 90;
-
-  return (
-    <CharacterContainer element={element} size={size}>
-      <CharacterImage
-        src={src}
-        alt={alt}
-        height={size}
-        width={size}
-        element={element}
-      />
-
-      {alternatives && (
-        <CharacterAlternative
-          numAlternatives={alternatives.length}
-          element={element}
-        />
-      )}
-
-      <CharacterElement
-        src={elementSrc}
-        alt={element}
-        height={size / 5}
-        width={size / 5}
-        element={element}
-      />
-    </CharacterContainer>
-  );
-};
-
-const CharacterAlternative = ({ numAlternatives, element }: any) => (
-  <CharacterAlternativeBadge element={element}>
-    +{numAlternatives}
-  </CharacterAlternativeBadge>
-);
-
 /*********************/
 /* Styled Components */
 /*********************/
-
-const Container = styled.main`
-  display: block;
-  max-width: 992px;
-  margin: 0 auto;
-  padding: var(--space-md) 0;
-`;
 
 const PatchTitle: any = styled.div`
   display: grid;
@@ -248,50 +203,6 @@ const TeamTitle = styled.div`
   color: white;
   font-size: 18px;
   cursor: pointer;
-`;
-
-const CharacterContainer: any = styled.div`
-  position: relative;
-  height: ${(props: any) => `${props.size}px`};
-  width: ${(props: any) => `${props.size}px`};
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  /* border: ${(props: any) =>
-    `1px solid var(--color-elements-${props.element})`}; */
-  background-color: rgba(36, 36, 36);
-  cursor: pointer;
-  transition: 0.2s;
-
-  &:hover {
-    background-color: ${(props: any) =>
-      `var(--color-elements-${props.element}-light)`};
-  }
-`;
-
-const CharacterElement: any = styled.img`
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  padding: 4px;
-  background-color: rgba(48, 48, 48, 0.6);
-  border-radius: 9999px;
-`;
-
-const CharacterImage: any = styled.img``;
-
-const CharacterAlternativeBadge: any = styled.span`
-  width: 25%;
-  height: 25%;
-  background-color: ${(props: any) => `var(--color-elements-${props.element})`};
-  position: absolute;
-  left: 4px;
-  bottom: 4px;
-  border-radius: 9999px;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgb(48, 48, 48);
 `;
 
 export default Home;
