@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 import Head from 'next/head';
 
+import Modal from 'components/atoms/Modal/Modal';
+import { useState } from 'react';
+
 interface Patch {
   name: string;
   tiers: Tier[];
@@ -14,13 +17,24 @@ interface Tier {
 
 interface Team {
   name: string;
+  description: string;
   characters: Character[];
 }
 
 interface Character {
   name: string;
-  element: string;
+  element: CharacterElement;
+  alternatives?: Character[];
 }
+
+type CharacterElement =
+  | 'pyro'
+  | 'hydro'
+  | 'electro'
+  | 'cryo'
+  | 'geo'
+  | 'anemo'
+  | 'dendro';
 
 const patch: Patch = {
   name: '2.4',
@@ -29,49 +43,46 @@ const patch: Patch = {
       name: 's',
       teams: [
         {
-          name: 'International',
-          characters: [
-            {
-              name: 'Tartaglia',
-              element: 'hydro',
-            },
-            {
-              name: 'Kazuha',
-              element: 'anemo',
-            },
-            {
-              name: 'Xiangling',
-              element: 'pyro',
-            },
-            {
-              name: 'Bennett',
-              element: 'pyro',
-            },
-          ],
-        },
-        {
           name: 'Morgana',
+          description: 'Descripción Morgana',
           characters: [
             {
               name: 'Ganyu',
               element: 'cryo',
             },
             {
-              name: 'Shenhe',
+              name: 'Ayaka',
               element: 'cryo',
+              alternatives: [
+                {
+                  name: 'Shenhe',
+                  element: 'cryo',
+                },
+                {
+                  name: 'Diona',
+                  element: 'cryo',
+                },
+              ],
             },
             {
               name: 'Venti',
               element: 'anemo',
             },
             {
-              name: 'Kokomi',
+              name: 'Mona',
               element: 'hydro',
+              alternatives: [
+                {
+                  name: 'Kokomi',
+                  element: 'hydro',
+                },
+              ],
             },
           ],
         },
         {
           name: 'Ayaka Freeze',
+          description: 'Descripción Ayaka Freeze',
           characters: [
             {
               name: 'Ayaka',
@@ -91,8 +102,10 @@ const patch: Patch = {
             },
           ],
         },
+
         {
           name: 'Hu Tao Vape',
+          description: 'Descripción Hu Tao Vape',
           characters: [
             {
               name: 'HuTao',
@@ -112,13 +125,102 @@ const patch: Patch = {
             },
           ],
         },
+        {
+          name: 'International',
+          description: 'Descripción International',
+          characters: [
+            {
+              name: 'Tartaglia',
+              element: 'hydro',
+            },
+            {
+              name: 'Kazuha',
+              element: 'anemo',
+            },
+            {
+              name: 'Xiangling',
+              element: 'pyro',
+            },
+            {
+              name: 'Bennett',
+              element: 'pyro',
+            },
+          ],
+        },
       ],
     },
     {
       name: 'a',
       teams: [
         {
+          name: 'Baaltional',
+          description: 'Descripción Baaltional',
+          characters: [
+            {
+              name: 'Raiden',
+              element: 'electro',
+            },
+            {
+              name: 'Xingqiu',
+              element: 'hydro',
+            },
+            {
+              name: 'Xiangling',
+              element: 'pyro',
+            },
+            {
+              name: 'Bennett',
+              element: 'pyro',
+            },
+          ],
+        },
+        {
+          name: 'Mono Pyro',
+          description: 'Descripción Mono Pyro',
+          characters: [
+            {
+              name: 'Xiangling',
+              element: 'pyro',
+            },
+            {
+              name: 'Bennett',
+              element: 'pyro',
+            },
+            {
+              name: 'Kazuha',
+              element: 'anemo',
+            },
+            {
+              name: 'Venti',
+              element: 'anemo',
+            },
+          ],
+        },
+        {
+          name: 'Childe Fireworks',
+          description: 'Descripción Childe Firework',
+          characters: [
+            {
+              name: 'Tartaglia',
+              element: 'hydro',
+            },
+            {
+              name: 'Fischl',
+              element: 'electro',
+            },
+            {
+              name: 'Beidou',
+              element: 'electro',
+            },
+            {
+              name: 'Bennett',
+              element: 'pyro',
+            },
+          ],
+        },
+        {
           name: 'Xiao DPS',
+          description: 'Descripción Xiao DPS',
           characters: [
             {
               name: 'Xiao',
@@ -138,6 +240,28 @@ const patch: Patch = {
             },
           ],
         },
+        {
+          name: 'Zhongli Taser',
+          description: 'Descripción Zhongli Taser',
+          characters: [
+            {
+              name: 'Zhongli',
+              element: 'geo',
+            },
+            {
+              name: 'Xingqiu',
+              element: 'hydro',
+            },
+            {
+              name: 'Fischl',
+              element: 'electro',
+            },
+            {
+              name: 'Beidou',
+              element: 'electro',
+            },
+          ],
+        },
       ],
     },
     {
@@ -145,6 +269,7 @@ const patch: Patch = {
       teams: [
         {
           name: 'Xiao DPS',
+          description: 'Xiao DPS',
           characters: [
             {
               name: 'Xiao',
@@ -171,6 +296,7 @@ const patch: Patch = {
       teams: [
         {
           name: 'Xiao DPS',
+          description: 'Xiao DPS',
           characters: [
             {
               name: 'Xiao',
@@ -218,6 +344,7 @@ const Home: NextPage = () => {
 const Patch = ({ patch }: any) => {
   return (
     <>
+      <PatchTitle>{`Parche ${patch.name}`}</PatchTitle>
       {patch.tiers.map((tier: any, index: any) => (
         <Tier key={index} tier={tier} />
       ))}
@@ -239,6 +366,15 @@ const Tier = ({ tier }: any) => {
 };
 
 const Team = ({ team }: any) => {
+  const [isModalShown, setIsModalShown] = useState(false);
+  const showModal = () => {
+    setIsModalShown(true);
+  };
+
+  const hideModal = () => {
+    setIsModalShown(false);
+  };
+
   return (
     <TeamContainer>
       <TeamCharactersContainer>
@@ -246,13 +382,33 @@ const Team = ({ team }: any) => {
           <Character key={index} character={character}></Character>
         ))}
       </TeamCharactersContainer>
-      <TeamTitle>{team.name}</TeamTitle>
+      <TeamTitle
+        onClick={() => {
+          showModal();
+        }}
+      >
+        {team.name}
+      </TeamTitle>
+
+      <TeamModal
+        team={team}
+        isShown={isModalShown}
+        hideModal={hideModal}
+      ></TeamModal>
     </TeamContainer>
   );
 };
 
+const TeamModal = ({ team, isShown, hideModal }: any) => {
+  return (
+    <Modal title={team.name} isShown={isShown} onHideModal={hideModal}>
+      {team.description}
+    </Modal>
+  );
+};
+
 const Character = ({ character }: any) => {
-  const { name, element } = character;
+  const { name, element, alternatives } = character;
   const src: string = `/assets/images/characters/${name}.png`;
   const elementSrc = `/assets/images/elements/${element}.png`;
   const alt: string = name.toLowerCase();
@@ -267,6 +423,14 @@ const Character = ({ character }: any) => {
         width={size}
         element={element}
       />
+
+      {alternatives && (
+        <CharacterAlternative
+          numAlternatives={alternatives.length}
+          element={element}
+        />
+      )}
+
       <CharacterElement
         src={elementSrc}
         alt={element}
@@ -278,9 +442,15 @@ const Character = ({ character }: any) => {
   );
 };
 
-/**********************/
+const CharacterAlternative = ({ numAlternatives, element }: any) => (
+  <CharacterAlternativeBadge element={element}>
+    +{numAlternatives}
+  </CharacterAlternativeBadge>
+);
+
+/*********************/
 /* Styled Components */
-/**********************/
+/*********************/
 
 const Container = styled.main`
   display: block;
@@ -289,10 +459,19 @@ const Container = styled.main`
   padding: var(--space-md) 0;
 `;
 
+const PatchTitle: any = styled.div`
+  display: grid;
+  place-items: center;
+  padding: var(--space-lg);
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+`;
+
 const TierContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: var(--space-md);
+  margin: var(--space-lg) 0;
   background: rgba(24, 24, 24);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -322,7 +501,6 @@ const TeamContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: var(--space-md);
-  background: rgba(24, 24, 24);
   border-radius: var(--border-radius);
   background-color: rgba(48, 48, 48);
   overflow: hidden;
@@ -374,5 +552,20 @@ const CharacterElement: any = styled.img`
 `;
 
 const CharacterImage: any = styled.img``;
+
+const CharacterAlternativeBadge: any = styled.span`
+  width: 25%;
+  height: 25%;
+  background-color: ${(props: any) => `var(--color-elements-${props.element})`};
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(48, 48, 48);
+`;
 
 export default Home;
