@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { IPatch } from 'interfaces/interfaces';
 
-import CHARACTERS from './characters';
+import CHARACTERS from './resources/characters';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const patch: IPatch = {
