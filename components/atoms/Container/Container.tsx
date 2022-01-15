@@ -4,7 +4,7 @@ const Container = styled.main`
   display: block;
   max-width: 992px;
   margin: 0 auto;
-  padding: var(--space-md) 0;
+  padding: var(--space-md);
 `;
 
 export default Container;

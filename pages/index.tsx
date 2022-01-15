@@ -30,13 +30,10 @@ const Home: NextPage = ({ patch }: any) => {
   );
 };
 
-Home.getInitialProps = () => {
-  return fetch('http://localhost:3000/api/patch')
-    .then((res) => res.json())
-    .then((response) => {
-      const { patch } = response;
-      return { patch: patch };
-    });
+Home.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/patch');
+  const response = await res.json();
+  return { patch: response };
 };
 
 export default Home;

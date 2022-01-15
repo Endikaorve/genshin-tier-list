@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Tier from 'components/molecules/Tier/Tier';
 
 const Patch = ({ patch }: any) => {
-  if (!patch) return null;
+  if (!patch) return <>Parche no seleccionado</>;
 
   return (
     <>
