@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Modal from 'components/atoms/Modal/Modal';
 import CharacterCard from '../CharacterCard/CharacterCard';
+import TeamModal from './TeamModal/TeamModal';
 
 const Team = ({
   team,
@@ -51,21 +51,6 @@ const Team = ({
         hideModal={hideModal}
       ></TeamModal>
     </TeamContainer>
-  );
-};
-
-const TeamModal = ({ team, isShown, hideModal }: any) => {
-  return (
-    <Modal title={team.name} isShown={isShown} onHideModal={hideModal}>
-      <Team
-        team={team}
-        isCenter={true}
-        showTitle={false}
-        characterSize={150}
-        characterShowAlternatives={false}
-        characterShowHover={false}
-      ></Team>
-    </Modal>
   );
 };
 
