@@ -10,6 +10,7 @@ const Team = ({
   team,
   showTitle = true,
   isCenter = false,
+  isBox = true,
   characterSize,
   characterShowAlternatives = true,
   characterShowHover = true,
@@ -28,7 +29,7 @@ const Team = ({
 
   return (
     <TeamContainer>
-      <TeamCharactersContainer isCenter={isCenter}>
+      <TeamCharactersContainer isCenter={isCenter} isBox={isBox}>
         {team.characters.map((character: any, index: any) => (
           <CharacterCard
             key={index}
@@ -72,7 +73,10 @@ const TeamContainer = styled.div`
 
 const TeamCharactersContainer: any = styled.div`
   display: grid;
-  grid-template-columns: min-content min-content;
+  grid-template-columns: ${(props: any) =>
+    props.isBox
+      ? `min-content min-content`
+      : 'min-content min-content min-content min-content'};
   grid-gap: var(--space-md);
 
   width: fit-content;

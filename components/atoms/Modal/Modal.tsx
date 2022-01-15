@@ -45,7 +45,7 @@ const StyledModalDialog = styled.div`
 const ModalContainer = styled.div`
   width: 100%;
   max-width: 758px;
-  margin: 32px 0;
+  margin: var(--space-xl) 0;
   background-color: rgba(48, 48, 48);
   border-radius: var(--border-radius);
 `;
@@ -54,9 +54,9 @@ const ModalHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-lg);
+  padding: var(--space-lg) var(--space-xl);
   border-bottom: 1px solid rgba(64, 64, 64);
-  font-size: 22px;
+  font-size: 24px;
 `;
 
 const ModalCloseButton = styled.button`
@@ -64,7 +64,7 @@ const ModalCloseButton = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  font-size: inherit;
+  font-size: 42px;
 `;
 
 const ModalBody = styled.div`
