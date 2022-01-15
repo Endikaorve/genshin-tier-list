@@ -14,7 +14,7 @@ const TeamModal = ({ team, isShown, hideModal }: any) => {
         isCenter={true}
         isBox={false}
         showTitle={false}
-        characterSize={150}
+        characterSize={130}
         characterShowAlternatives={false}
         characterShowHover={false}
       ></Team>
@@ -32,7 +32,7 @@ const TeamModal = ({ team, isShown, hideModal }: any) => {
 };
 
 const CharacterAlternative = ({ character }: any) => {
-  const size: number = 100;
+  const size: number = 90;
 
   if (!character.alternatives?.length) return null;
 
@@ -65,7 +65,7 @@ const CharacterAlternative = ({ character }: any) => {
 export default TeamModal;
 
 const StyledCharacterAlternativesContainer = styled.div`
-  margin-top: var(--space-xl);
+  padding: var(--space-lg);
 `;
 
 const StyledCharacterAlternative = styled.div`
