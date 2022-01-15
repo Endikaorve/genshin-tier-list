@@ -4,7 +4,14 @@ import styled from 'styled-components';
 import Modal from 'components/atoms/Modal/Modal';
 import CharacterCard from '../CharacterCard/CharacterCard';
 
-const Team = ({ team }: any) => {
+const Team = ({
+  team,
+  showTitle = true,
+  isCenter = false,
+  characterSize,
+  characterShowAlternatives = true,
+  characterShowHover = true,
+}: any) => {
   const [isModalShown, setIsModalShown] = useState(false);
   const showModal = () => {
     setIsModalShown(true);
@@ -16,18 +23,27 @@ const Team = ({ team }: any) => {
 
   return (
     <TeamContainer>
-      <TeamCharactersContainer>
+      <TeamCharactersContainer isCenter={isCenter}>
         {team.characters.map((character: any, index: any) => (
-          <CharacterCard key={index} character={character} />
+          <CharacterCard
+            key={index}
+            character={character}
+            size={characterSize}
+            showAlternatives={characterShowAlternatives}
+            showHover={characterShowHover}
+          />
         ))}
       </TeamCharactersContainer>
-      <TeamTitle
-        onClick={() => {
-          showModal();
-        }}
-      >
-        {team.name}
-      </TeamTitle>
+
+      {showTitle && (
+        <TeamTitle
+          onClick={() => {
+            showModal();
+          }}
+        >
+          {team.name}
+        </TeamTitle>
+      )}
 
       <TeamModal
         team={team}
@@ -41,7 +57,14 @@ const Team = ({ team }: any) => {
 const TeamModal = ({ team, isShown, hideModal }: any) => {
   return (
     <Modal title={team.name} isShown={isShown} onHideModal={hideModal}>
-      {team.description}
+      <Team
+        team={team}
+        isCenter={true}
+        showTitle={false}
+        characterSize={150}
+        characterShowAlternatives={false}
+        characterShowHover={false}
+      ></Team>
     </Modal>
   );
 };
@@ -57,13 +80,15 @@ const TeamContainer = styled.div`
   overflow: hidden;
 `;
 
-const TeamCharactersContainer = styled.div`
+const TeamCharactersContainer: any = styled.div`
   display: grid;
   grid-template-columns: min-content min-content;
   grid-gap: var(--space-md);
 
   width: fit-content;
   padding: var(--space-md);
+
+  margin: ${({ isCenter }: any) => (isCenter ? '0 auto' : '')};
 `;
 
 const TeamTitle = styled.div`

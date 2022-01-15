@@ -7,7 +7,7 @@ const Tier = ({ tier }: any) => {
       <TierTitle tierName={tier.name}>{tier.name.toUpperCase()}</TierTitle>
       <TierTeamsContainer>
         {tier.teams.map((team: any, index: any) => (
-          <Team key={index} team={team}></Team>
+          <Team key={index} team={team} characterSize={90}></Team>
         ))}
       </TierTeamsContainer>
     </TierContainer>

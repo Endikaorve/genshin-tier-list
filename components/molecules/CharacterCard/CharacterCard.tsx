@@ -1,24 +1,27 @@
 import styled from 'styled-components';
 import CharacterCardAlternatives from './CharacterCardAlternatives/CharacterCardAlternatives';
 
-const CharacterCard = ({ character }: any) => {
+const CharacterCard = ({
+  character,
+  size,
+  showAlternatives = true,
+  showHover = true,
+}: any) => {
   const { name, element, alternatives } = character;
-  const src: string = `/assets/images/characters/${name}.png`;
+  const characterSrc: string = `/assets/images/characters/${name}.png`;
   const elementSrc = `/assets/images/elements/${element}.png`;
-  const alt: string = name.toLowerCase();
-  const size: number = 90;
 
   return (
-    <CharacterCardContainer element={element} size={size}>
+    <CharacterCardContainer size={size} element={element} showHover={showHover}>
       <CharacterCardImage
-        src={src}
-        alt={alt}
+        src={characterSrc}
+        alt={name}
         height={size}
         width={size}
         element={element}
       />
 
-      {alternatives && (
+      {alternatives && showAlternatives && (
         <CharacterCardAlternatives
           numAlternatives={alternatives.length}
           element={element}
@@ -44,15 +47,13 @@ const CharacterCardContainer: any = styled.div`
   width: ${(props: any) => `${props.size}px`};
   border-radius: var(--border-radius);
   overflow: hidden;
-  /* border: ${(props: any) =>
-    `1px solid var(--color-elements-${props.element})`}; */
   background-color: rgba(36, 36, 36);
-  cursor: pointer;
+  cursor: ${(props: any) => (props.showHover ? 'pointer' : 'default')};
   transition: 0.2s;
 
   &:hover {
     background-color: ${(props: any) =>
-      `var(--color-elements-${props.element}-light)`};
+      props.showHover ? `var(--color-elements-${props.element}-light)` : ''};
   }
 `;
 
