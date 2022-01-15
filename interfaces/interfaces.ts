@@ -9,7 +9,6 @@ export interface ITier {
 
 export interface ITeam {
   name: string;
-  description: string;
   characters: ICharacter[];
 }
 
