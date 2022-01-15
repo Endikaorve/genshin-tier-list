@@ -5,12 +5,22 @@ import Head from 'next/head';
 import Container from 'components/atoms/Container/Container';
 import Patch from 'components/molecules/Patch/Patch';
 import { IPatch } from 'interfaces/interfaces';
+import { useEffect, useState } from 'react';
 
-export interface HomeProps {
-  patch: IPatch;
-}
+import fetchPatch from 'functions/Patch/fetchPatch';
 
-const Home: NextPage = ({ patch }: any) => {
+const Home: NextPage = () => {
+  const [patch, setPatch] = useState<IPatch | undefined>(undefined);
+  const defaultPatch: string = '2-4';
+
+  useEffect(() => {
+    fetchPatch(defaultPatch)
+      .then((patch: IPatch | undefined) => {
+        setPatch(patch);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <div>
       <Head>
@@ -28,13 +38,6 @@ const Home: NextPage = ({ patch }: any) => {
       </Container>
     </div>
   );
-};
-
-Home.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/patch/2-4');
-  const response = await res.json();
-  const { patch } = response;
-  return { patch: patch };
 };
 
 export default Home;
