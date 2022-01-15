@@ -19,25 +19,25 @@ const TeamModal = ({ team, isShown, hideModal }: any) => {
         characterShowHover={false}
       ></Team>
 
-      <StyledTeamModalDetailsContainer></StyledTeamModalDetailsContainer>
-
-      {team.characters.map((character: ICharacter, index: number) => (
-        <CharacterAlternativesBlock
-          key={index}
-          character={character}
-        ></CharacterAlternativesBlock>
-      ))}
+      <StyledCharacterAlternativesContainer>
+        {team.characters.map((character: ICharacter, index: number) => (
+          <CharacterAlternative
+            key={index}
+            character={character}
+          ></CharacterAlternative>
+        ))}
+      </StyledCharacterAlternativesContainer>
     </Modal>
   );
 };
 
-const CharacterAlternativesBlock = ({ character }: any) => {
+const CharacterAlternative = ({ character }: any) => {
   const size: number = 100;
 
   if (!character.alternatives?.length) return null;
 
   return (
-    <StyledCharacterAlternativesBlock>
+    <StyledCharacterAlternative>
       <CharacterCard
         character={character}
         size={size}
@@ -58,22 +58,26 @@ const CharacterAlternativesBlock = ({ character }: any) => {
           ></CharacterCard>
         )
       )}
-    </StyledCharacterAlternativesBlock>
+    </StyledCharacterAlternative>
   );
 };
 
 export default TeamModal;
 
-const StyledTeamModalDetailsContainer = styled.div`
-  padding: var(--space-xl) var(--space-md) 0 var(--space-md);
+const StyledCharacterAlternativesContainer = styled.div`
+  margin-top: var(--space-xl);
 `;
 
-const StyledCharacterAlternativesBlock = styled.div`
+const StyledCharacterAlternative = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 
   margin-bottom: var(--space-lg);
 
   font-size: 42px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
