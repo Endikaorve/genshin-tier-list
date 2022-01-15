@@ -14,10 +14,12 @@ const Team = ({
 }: any) => {
   const [isModalShown, setIsModalShown] = useState(false);
   const showModal = () => {
+    document.body.style.overflow = 'hidden';
     setIsModalShown(true);
   };
 
   const hideModal = () => {
+    document.body.style.overflow = 'unset';
     setIsModalShown(false);
   };
 
