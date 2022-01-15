@@ -7,7 +7,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     name: '2.4',
     tiers: [
       {
-        name: 's',
+        name: 'S',
         teams: [
           {
             name: 'Morgana',
@@ -118,7 +118,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         ],
       },
       {
-        name: 'a',
+        name: 'A',
         teams: [
           {
             name: 'Baaltional',
@@ -233,7 +233,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         ],
       },
       {
-        name: 'b',
+        name: 'B',
         teams: [
           {
             name: 'Xiao DPS',
@@ -260,7 +260,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         ],
       },
       {
-        name: 'c',
+        name: 'C',
         teams: [
           {
             name: 'Xiao DPS',
@@ -293,7 +293,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     name: '2.4',
     tiers: [
       {
-        name: 's',
+        name: 'S',
         teams: [
           {
             name: 'Morgana',

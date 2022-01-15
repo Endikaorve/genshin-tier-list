@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Team from 'components/molecules/Team/Team';
 
-const Tier = ({ tier }: any) => {
+const Tier = ({ tier, index }: any) => {
   return (
     <TierContainer>
-      <TierTitle tierName={tier.name}>{tier.name.toUpperCase()}</TierTitle>
+      <TierTitle backgroundColorIndex={index}>{tier.name}</TierTitle>
       <TierTeamsContainer>
         {tier.teams.map((team: any, index: any) => (
           <Team key={index} team={team} characterSize={90}></Team>
@@ -29,7 +29,8 @@ const TierTitle: any = styled.div`
   display: grid;
   place-items: center;
   padding: var(--space-md);
-  background-color: ${(props: any) => `var(--color-tiers-${props.tierName})`};
+  background-color: ${(props: any) =>
+    `var(--color-tiers-${props.backgroundColorIndex})`};
   color: white;
   font-size: 48px;
   font-weight: 600;

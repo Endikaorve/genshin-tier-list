@@ -1,13 +1,13 @@
 :root {
   --color-white: #ffffff;
 
-  --color-tiers-s: #fe7676;
-  --color-tiers-a: #ffc48a;
-  --color-tiers-b: #efcb56;
-  --color-tiers-c: #64e477;
-  --color-tiers-d: #74bcec;
-  --color-tiers-e: #976abf;
-  --color-tiers-f: #a8a8a8;
+  --color-tiers-0: #fe7676;
+  --color-tiers-1: #ffc48a;
+  --color-tiers-2: #efcb56;
+  --color-tiers-3: #64e477;
+  --color-tiers-4: #74bcec;
+  --color-tiers-5: #976abf;
+  --color-tiers-6: #a8a8a8;
 
   --color-elements-pyro: rgb(254, 146, 93);
   --color-elements-pyro-light: rgba(254, 146, 93, 0.6);

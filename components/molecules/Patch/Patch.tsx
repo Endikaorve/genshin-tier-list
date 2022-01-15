@@ -8,7 +8,7 @@ const Patch = ({ patch }: any) => {
     <>
       <PatchTitle>{`Parche ${patch.name}`}</PatchTitle>
       {patch.tiers.map((tier: any, index: any) => (
-        <Tier key={index} tier={tier} />
+        <Tier key={index} tier={tier} index={index} />
       ))}
     </>
   );
