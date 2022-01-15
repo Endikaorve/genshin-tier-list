@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import CharacterCard from '../CharacterCard/CharacterCard';
 import TeamModal from './TeamModal/TeamModal';
 
+import { hideBodyScrollbar, showBodyScrollbar } from 'utils/utils';
+
 const Team = ({
   team,
   showTitle = true,
@@ -13,13 +15,14 @@ const Team = ({
   characterShowHover = true,
 }: any) => {
   const [isModalShown, setIsModalShown] = useState(false);
+
   const showModal = () => {
-    document.body.style.overflow = 'hidden';
+    hideBodyScrollbar();
     setIsModalShown(true);
   };
 
   const hideModal = () => {
-    document.body.style.overflow = 'unset';
+    showBodyScrollbar();
     setIsModalShown(false);
   };
 
