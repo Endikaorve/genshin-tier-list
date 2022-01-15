@@ -13,8 +13,8 @@ const CharacterCardAlternativesBadge: any = styled.span`
   height: 25%;
   background-color: ${(props: any) => `var(--color-elements-${props.element})`};
   position: absolute;
-  left: 4px;
-  bottom: 4px;
+  right: 4px;
+  top: 4px;
   border-radius: 9999px;
   display: grid;
   place-items: center;
