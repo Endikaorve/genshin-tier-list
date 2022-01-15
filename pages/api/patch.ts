@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { IPatch } from 'interfaces/interfaces';
 
+import CHARACTERS from './characters';
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const patch: IPatch = {
     name: '2.4',
@@ -11,108 +13,64 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         teams: [
           {
             name: 'Morgana',
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a hendrerit justo. Fusce accumsan elit eget nunc dapibus, vel convallis nulla pretium. Curabitur posuere purus sit amet leo tincidunt hendrerit. Nulla condimentum eleifend libero, sed consectetur nulla ultrices eget. Mauris non risus a nulla consequat dapibus.',
             characters: [
+              { ...CHARACTERS.ganyu },
               {
-                name: 'Ganyu',
-                element: 'cryo',
+                ...CHARACTERS.ayaka,
+                alternatives: [CHARACTERS.shenhe, CHARACTERS.diona],
               },
+              { ...CHARACTERS.venti },
               {
-                name: 'Ayaka',
-                element: 'cryo',
-                alternatives: [
-                  {
-                    name: 'Shenhe',
-                    element: 'cryo',
-                  },
-                  {
-                    name: 'Diona',
-                    element: 'cryo',
-                  },
-                ],
-              },
-              {
-                name: 'Venti',
-                element: 'anemo',
-              },
-              {
-                name: 'Mona',
-                element: 'hydro',
-                alternatives: [
-                  {
-                    name: 'Kokomi',
-                    element: 'hydro',
-                  },
-                ],
+                ...CHARACTERS.mona,
+                alternatives: [CHARACTERS.kokomi],
               },
             ],
           },
           {
             name: 'Ayaka Freeze',
-            description: 'Descripción Ayaka Freeze',
             characters: [
+              { ...CHARACTERS.ayaka },
               {
-                name: 'Ayaka',
-                element: 'cryo',
+                ...CHARACTERS.shenhe,
+                alternatives: [
+                  CHARACTERS.diona,
+                  CHARACTERS.rosaria,
+                  CHARACTERS.kaeya,
+                ],
               },
               {
-                name: 'Shenhe',
-                element: 'cryo',
+                ...CHARACTERS.kazuha,
+                alternatives: [CHARACTERS.venti],
               },
               {
-                name: 'Kazuha',
-                element: 'anemo',
-              },
-              {
-                name: 'Kokomi',
-                element: 'hydro',
+                ...CHARACTERS.kokomi,
+                alternatives: [CHARACTERS.xingqiu, CHARACTERS.mona],
               },
             ],
           },
 
           {
             name: 'Hu Tao Vape',
-            description: 'Descripción Hu Tao Vape',
             characters: [
+              { ...CHARACTERS.hutao },
+              { ...CHARACTERS.xingqiu },
+              { ...CHARACTERS.zhongli },
               {
-                name: 'HuTao',
-                element: 'pyro',
-              },
-              {
-                name: 'Xingqiu',
-                element: 'hydro',
-              },
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Fischl',
-                element: 'electro',
+                ...CHARACTERS.fischl,
+                alternatives: [CHARACTERS.albedo],
               },
             ],
           },
           {
             name: 'International',
-            description: 'Descripción International',
             characters: [
+              { ...CHARACTERS.tartaglia },
               {
-                name: 'Tartaglia',
-                element: 'hydro',
+                ...CHARACTERS.kazuha,
+                alternatives: [CHARACTERS.sucrose],
               },
-              {
-                name: 'Kazuha',
-                element: 'anemo',
-              },
-              {
-                name: 'Xiangling',
-                element: 'pyro',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
+              { ...CHARACTERS.xiangling },
+              { ...CHARACTERS.bennett },
             ],
           },
         ],
@@ -122,166 +80,47 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         teams: [
           {
             name: 'Baaltional',
-            description: 'Descripción Baaltional',
             characters: [
-              {
-                name: 'Raiden',
-                element: 'electro',
-              },
-              {
-                name: 'Xingqiu',
-                element: 'hydro',
-              },
-              {
-                name: 'Xiangling',
-                element: 'pyro',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
+              { ...CHARACTERS.raiden },
+              { ...CHARACTERS.xingqiu },
+              { ...CHARACTERS.xiangling },
+              { ...CHARACTERS.bennett },
             ],
           },
           {
             name: 'Mono Pyro',
-            description: 'Descripción Mono Pyro',
             characters: [
-              {
-                name: 'Xiangling',
-                element: 'pyro',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
-              {
-                name: 'Kazuha',
-                element: 'anemo',
-              },
-              {
-                name: 'Venti',
-                element: 'anemo',
-              },
+              { ...CHARACTERS.xiangling },
+              { ...CHARACTERS.bennett },
+              { ...CHARACTERS.kazuha },
+              { ...CHARACTERS.venti },
             ],
           },
           {
             name: 'Childe Fireworks',
-            description: 'Descripción Childe Firework',
             characters: [
-              {
-                name: 'Tartaglia',
-                element: 'hydro',
-              },
-              {
-                name: 'Fischl',
-                element: 'electro',
-              },
-              {
-                name: 'Beidou',
-                element: 'electro',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
+              { ...CHARACTERS.tartaglia },
+              { ...CHARACTERS.fischl },
+              { ...CHARACTERS.beidou },
+              { ...CHARACTERS.bennett },
             ],
           },
           {
             name: 'Xiao DPS',
-            description: 'Descripción Xiao DPS',
             characters: [
-              {
-                name: 'Xiao',
-                element: 'anemo',
-              },
-              {
-                name: 'Sucrose',
-                element: 'anemo',
-              },
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
+              { ...CHARACTERS.xiao },
+              { ...CHARACTERS.sucrose },
+              { ...CHARACTERS.zhongli },
+              { ...CHARACTERS.bennett },
             ],
           },
           {
             name: 'Zhongli Taser',
-            description: 'Descripción Zhongli Taser',
             characters: [
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Xingqiu',
-                element: 'hydro',
-              },
-              {
-                name: 'Fischl',
-                element: 'electro',
-              },
-              {
-                name: 'Beidou',
-                element: 'electro',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: 'B',
-        teams: [
-          {
-            name: 'Xiao DPS',
-            description: 'Xiao DPS',
-            characters: [
-              {
-                name: 'Xiao',
-                element: 'anemo',
-              },
-              {
-                name: 'Sucrose',
-                element: 'anemo',
-              },
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: 'C',
-        teams: [
-          {
-            name: 'Xiao DPS',
-            description: 'Xiao DPS',
-            characters: [
-              {
-                name: 'Xiao',
-                element: 'anemo',
-              },
-              {
-                name: 'Sucrose',
-                element: 'anemo',
-              },
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
+              { ...CHARACTERS.zhongli },
+              { ...CHARACTERS.xingqiu },
+              { ...CHARACTERS.fischl },
+              { ...CHARACTERS.beidou },
             ],
           },
         ],
@@ -289,121 +128,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     ],
   };
 
-  const patchSmall: IPatch = {
-    name: '2.4',
-    tiers: [
-      {
-        name: 'S',
-        teams: [
-          {
-            name: 'Morgana',
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a hendrerit justo. Fusce accumsan elit eget nunc dapibus, vel convallis nulla pretium. Curabitur posuere purus sit amet leo tincidunt hendrerit. Nulla condimentum eleifend libero, sed consectetur nulla ultrices eget. Mauris non risus a nulla consequat dapibus.',
-            characters: [
-              {
-                name: 'Ganyu',
-                element: 'cryo',
-              },
-              {
-                name: 'Ayaka',
-                element: 'cryo',
-                alternatives: [
-                  {
-                    name: 'Shenhe',
-                    element: 'cryo',
-                  },
-                  {
-                    name: 'Diona',
-                    element: 'cryo',
-                  },
-                ],
-              },
-              {
-                name: 'Venti',
-                element: 'anemo',
-              },
-              {
-                name: 'Mona',
-                element: 'hydro',
-                alternatives: [
-                  {
-                    name: 'Kokomi',
-                    element: 'hydro',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            name: 'Ayaka Freeze',
-            description: 'Descripción Ayaka Freeze',
-            characters: [
-              {
-                name: 'Ayaka',
-                element: 'cryo',
-              },
-              {
-                name: 'Shenhe',
-                element: 'cryo',
-              },
-              {
-                name: 'Kazuha',
-                element: 'anemo',
-              },
-              {
-                name: 'Kokomi',
-                element: 'hydro',
-              },
-            ],
-          },
-
-          {
-            name: 'Hu Tao Vape',
-            description: 'Descripción Hu Tao Vape',
-            characters: [
-              {
-                name: 'HuTao',
-                element: 'pyro',
-              },
-              {
-                name: 'Xingqiu',
-                element: 'hydro',
-              },
-              {
-                name: 'Zhongli',
-                element: 'geo',
-              },
-              {
-                name: 'Fischl',
-                element: 'electro',
-              },
-            ],
-          },
-          {
-            name: 'International',
-            description: 'Descripción International',
-            characters: [
-              {
-                name: 'Tartaglia',
-                element: 'hydro',
-              },
-              {
-                name: 'Kazuha',
-                element: 'anemo',
-              },
-              {
-                name: 'Xiangling',
-                element: 'pyro',
-              },
-              {
-                name: 'Bennett',
-                element: 'pyro',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  };
   res.status(200).json(patch);
 }
