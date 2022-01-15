@@ -1,11 +1,23 @@
 import styled from 'styled-components';
 
-const Modal = ({ isShown, title, children, onHideModal }: any) => {
+const Modal = ({
+  isShown,
+  title,
+  children,
+  onHideModal,
+  preventBackdropClick = false,
+}: any) => {
+  const handleClickHide = (e: any) => {
+    if (e.currentTarget !== e.target || preventBackdropClick) return;
+
+    onHideModal();
+  };
+
   if (!isShown) return null;
 
   return (
     <StyledModal>
-      <StyledModalDialog>
+      <StyledModalDialog onClick={(e) => handleClickHide(e)}>
         <ModalContainer>
           <ModalHeader>
             {title}

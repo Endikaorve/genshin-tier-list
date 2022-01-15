@@ -27,36 +27,38 @@ const Team = ({
     setIsModalShown(false);
   };
 
+  const handleClickTeam = (e: any) => {
+    e.preventDefault();
+    showModal();
+  };
+
   return (
-    <TeamContainer>
-      <TeamCharactersContainer isCenter={isCenter} isBox={isBox}>
-        {team.characters.map((character: any, index: any) => (
-          <CharacterCard
-            key={index}
-            character={character}
-            size={characterSize}
-            showAlternatives={characterShowAlternatives}
-            showHover={characterShowHover}
-          />
-        ))}
-      </TeamCharactersContainer>
+    <>
+      <TeamContainer
+        onClick={(e: any) => {
+          handleClickTeam(e);
+        }}
+      >
+        <TeamCharactersContainer isCenter={isCenter} isBox={isBox}>
+          {team.characters.map((character: any, index: any) => (
+            <CharacterCard
+              key={index}
+              character={character}
+              size={characterSize}
+              showAlternatives={characterShowAlternatives}
+              showHover={characterShowHover}
+            />
+          ))}
+        </TeamCharactersContainer>
 
-      {showTitle && (
-        <TeamTitle
-          onClick={() => {
-            showModal();
-          }}
-        >
-          {team.name}
-        </TeamTitle>
-      )}
-
+        {showTitle && <TeamTitle>{team.name}</TeamTitle>}
+      </TeamContainer>
       <TeamModal
         team={team}
         isShown={isModalShown}
         hideModal={hideModal}
       ></TeamModal>
-    </TeamContainer>
+    </>
   );
 };
 
@@ -69,6 +71,12 @@ const TeamContainer = styled.div`
   border-radius: var(--border-radius);
   background-color: rgba(48, 48, 48);
   overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: rgba(72, 72, 72);
+  }
 `;
 
 const TeamCharactersContainer: any = styled.div`
@@ -91,5 +99,4 @@ const TeamTitle = styled.div`
   padding: var(--space-md) var(--space-md) var(--space-lg) var(--space-md);
   color: white;
   font-size: 18px;
-  cursor: pointer;
 `;
