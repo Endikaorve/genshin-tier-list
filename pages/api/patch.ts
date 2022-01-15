@@ -11,7 +11,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         teams: [
           {
             name: 'Morgana',
-            description: 'Descripción Morgana',
+            description:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a hendrerit justo. Fusce accumsan elit eget nunc dapibus, vel convallis nulla pretium. Curabitur posuere purus sit amet leo tincidunt hendrerit. Nulla condimentum eleifend libero, sed consectetur nulla ultrices eget. Mauris non risus a nulla consequat dapibus.',
             characters: [
               {
                 name: 'Ganyu',
@@ -276,6 +277,123 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               {
                 name: 'Zhongli',
                 element: 'geo',
+              },
+              {
+                name: 'Bennett',
+                element: 'pyro',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
+  const patchSmall: IPatch = {
+    name: '2.4',
+    tiers: [
+      {
+        name: 's',
+        teams: [
+          {
+            name: 'Morgana',
+            description:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a hendrerit justo. Fusce accumsan elit eget nunc dapibus, vel convallis nulla pretium. Curabitur posuere purus sit amet leo tincidunt hendrerit. Nulla condimentum eleifend libero, sed consectetur nulla ultrices eget. Mauris non risus a nulla consequat dapibus.',
+            characters: [
+              {
+                name: 'Ganyu',
+                element: 'cryo',
+              },
+              {
+                name: 'Ayaka',
+                element: 'cryo',
+                alternatives: [
+                  {
+                    name: 'Shenhe',
+                    element: 'cryo',
+                  },
+                  {
+                    name: 'Diona',
+                    element: 'cryo',
+                  },
+                ],
+              },
+              {
+                name: 'Venti',
+                element: 'anemo',
+              },
+              {
+                name: 'Mona',
+                element: 'hydro',
+                alternatives: [
+                  {
+                    name: 'Kokomi',
+                    element: 'hydro',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: 'Ayaka Freeze',
+            description: 'Descripción Ayaka Freeze',
+            characters: [
+              {
+                name: 'Ayaka',
+                element: 'cryo',
+              },
+              {
+                name: 'Shenhe',
+                element: 'cryo',
+              },
+              {
+                name: 'Kazuha',
+                element: 'anemo',
+              },
+              {
+                name: 'Kokomi',
+                element: 'hydro',
+              },
+            ],
+          },
+
+          {
+            name: 'Hu Tao Vape',
+            description: 'Descripción Hu Tao Vape',
+            characters: [
+              {
+                name: 'HuTao',
+                element: 'pyro',
+              },
+              {
+                name: 'Xingqiu',
+                element: 'hydro',
+              },
+              {
+                name: 'Zhongli',
+                element: 'geo',
+              },
+              {
+                name: 'Fischl',
+                element: 'electro',
+              },
+            ],
+          },
+          {
+            name: 'International',
+            description: 'Descripción International',
+            characters: [
+              {
+                name: 'Tartaglia',
+                element: 'hydro',
+              },
+              {
+                name: 'Kazuha',
+                element: 'anemo',
+              },
+              {
+                name: 'Xiangling',
+                element: 'pyro',
               },
               {
                 name: 'Bennett',
