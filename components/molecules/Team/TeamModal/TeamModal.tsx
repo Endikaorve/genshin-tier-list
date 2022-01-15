@@ -6,7 +6,15 @@ import Team from '../Team';
 import { ICharacter, ITeam } from 'interfaces/interfaces';
 import CharacterCard from 'components/molecules/CharacterCard/CharacterCard';
 
-const TeamModal = ({ team, isShown, hideModal }: any) => {
+const TeamModal = ({
+  team,
+  isShown,
+  hideModal,
+}: {
+  team: ITeam;
+  isShown: boolean;
+  hideModal: any;
+}) => {
   return (
     <Modal title={team.name} isShown={isShown} onHideModal={hideModal}>
       <Team
@@ -31,7 +39,7 @@ const TeamModal = ({ team, isShown, hideModal }: any) => {
   );
 };
 
-const CharacterAlternative = ({ character }: any) => {
+const CharacterAlternative = ({ character }: { character: ICharacter }) => {
   const size: number = 90;
 
   if (!character.alternatives?.length) return null;

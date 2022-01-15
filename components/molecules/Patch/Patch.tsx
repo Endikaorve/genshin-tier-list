@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import Tier from 'components/molecules/Tier/Tier';
 
-const Patch = ({ patch }: any) => {
+import { ITier, IPatch } from 'interfaces/interfaces';
+
+const Patch = ({ patch }: { patch: IPatch | undefined }) => {
   if (!patch) return <>Parche no seleccionado</>;
 
   return (
     <>
       <PatchTitle>{`Parche ${patch.name}`}</PatchTitle>
-      {patch.tiers.map((tier: any, index: any) => (
+      {patch.tiers.map((tier: ITier, index: number) => (
         <Tier key={index} tier={tier} index={index} />
       ))}
     </>

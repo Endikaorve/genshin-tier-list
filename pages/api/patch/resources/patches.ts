@@ -6,7 +6,7 @@ const patch_2_4: IPatch = {
   name: '2.4',
   tiers: [
     {
-      name: 'S - 2.4',
+      name: 'S',
       teams: [
         {
           name: 'Morgana',

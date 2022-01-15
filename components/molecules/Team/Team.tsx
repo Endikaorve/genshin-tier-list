@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import styled from 'styled-components';
 
 import CharacterCard from '../CharacterCard/CharacterCard';
 import TeamModal from './TeamModal/TeamModal';
 
 import { hideBodyScrollbar, showBodyScrollbar } from 'utils/utils';
+import { ICharacter, ITeam } from 'interfaces/interfaces';
 
 const Team = ({
   team,
@@ -14,7 +15,15 @@ const Team = ({
   characterSize,
   characterShowAlternatives = true,
   characterShowHover = true,
-}: any) => {
+}: {
+  team: ITeam;
+  showTitle?: boolean;
+  isCenter?: boolean;
+  isBox?: boolean;
+  characterSize: number;
+  characterShowAlternatives?: boolean;
+  characterShowHover?: boolean;
+}) => {
   const [isModalShown, setIsModalShown] = useState(false);
 
   const showModal = () => {
@@ -27,7 +36,7 @@ const Team = ({
     setIsModalShown(false);
   };
 
-  const handleClickTeam = (e: any) => {
+  const handleClickTeam = (e: MouseEvent) => {
     e.preventDefault();
     showModal();
   };
@@ -35,12 +44,12 @@ const Team = ({
   return (
     <>
       <TeamContainer
-        onClick={(e: any) => {
+        onClick={(e: MouseEvent) => {
           handleClickTeam(e);
         }}
       >
         <TeamCharactersContainer isCenter={isCenter} isBox={isBox}>
-          {team.characters.map((character: any, index: any) => (
+          {team.characters.map((character: ICharacter, index: number) => (
             <CharacterCard
               key={index}
               character={character}
@@ -81,8 +90,8 @@ const TeamContainer = styled.div`
 
 const TeamCharactersContainer: any = styled.div`
   display: grid;
-  grid-template-columns: ${(props: any) =>
-    props.isBox
+  grid-template-columns: ${({ isBox }: { isBox: boolean }) =>
+    isBox
       ? `min-content min-content`
       : 'min-content min-content min-content min-content'};
   grid-gap: var(--space-md);

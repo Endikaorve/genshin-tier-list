@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Team from 'components/molecules/Team/Team';
+import { ITier } from 'interfaces/interfaces';
 
-const Tier = ({ tier, index }: any) => {
+const Tier = ({ tier, index }: { tier: ITier; index: number }) => {
   return (
     <TierContainer>
       <TierTitle backgroundColorIndex={index}>{tier.name}</TierTitle>

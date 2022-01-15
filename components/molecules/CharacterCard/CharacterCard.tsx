@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import CharacterCardAlternatives from './CharacterCardAlternatives/CharacterCardAlternatives';
 
+import { ICharacter } from 'interfaces/interfaces';
+
 const CharacterCard = ({
   character,
   size,
   showAlternatives = true,
   showHover = true,
-}: any) => {
+}: {
+  character: ICharacter;
+  size: number;
+  showAlternatives: boolean;
+  showHover: boolean;
+}) => {
   const { name, element, alternatives } = character;
   const characterSrc: string = `/assets/images/characters/${name}.png`;
   const elementSrc = `/assets/images/elements/${element}.png`;
@@ -43,17 +50,17 @@ export default CharacterCard;
 
 const CharacterCardContainer: any = styled.div`
   position: relative;
-  height: ${(props: any) => `${props.size}px`};
-  width: ${(props: any) => `${props.size}px`};
+  height: ${({ size }: { size: number }) => `${size}px`};
+  width: ${({ size }: { size: number }) => `${size}px`};
   border-radius: var(--border-radius);
   overflow: hidden;
   background-color: rgba(36, 36, 36);
-  cursor: ${(props: any) => (props.showHover ? 'pointer' : 'default')};
+  cursor: ${({ showHover }: any) => (showHover ? 'pointer' : 'default')};
   transition: 0.2s;
 
   &:hover {
-    background-color: ${(props: any) =>
-      props.showHover ? `var(--color-elements-${props.element}-light)` : ''};
+    background-color: ${({ showHover, element }: any) =>
+      showHover ? `var(--color-elements-${element}-light)` : ''};
   }
 `;
 

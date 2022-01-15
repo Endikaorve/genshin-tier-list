@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-const CharacterCardAlternatives = ({ numAlternatives, element }: any) => (
+const CharacterCardAlternatives = ({
+  numAlternatives,
+  element,
+}: {
+  numAlternatives: number;
+  element: string;
+}) => (
   <CharacterCardAlternativesBadge element={element}>
     +{numAlternatives}
   </CharacterCardAlternativesBadge>

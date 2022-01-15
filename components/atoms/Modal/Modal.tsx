@@ -6,7 +6,13 @@ const Modal = ({
   children,
   onHideModal,
   preventBackdropClick = false,
-}: any) => {
+}: {
+  isShown: boolean;
+  title: string;
+  children: any;
+  onHideModal: any;
+  preventBackdropClick?: boolean;
+}) => {
   const handleClickHide = (e: any) => {
     if (e.currentTarget !== e.target || preventBackdropClick) return;
 
