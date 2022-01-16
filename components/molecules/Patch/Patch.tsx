@@ -1,33 +1,47 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+
 import Tier from 'components/molecules/Tier/Tier';
 
 import { ITier, IPatch } from 'interfaces/interfaces';
 
-const Patch = ({
-  patches,
-  selectedPatch,
-  onPreviousPatchID,
-  onNextPatchID,
-}: {
-  patches: IPatch[];
-  selectedPatch: IPatch | undefined;
-  onPreviousPatchID: any;
-  onNextPatchID: any;
-}) => {
+const Patch = ({ patches }: { patches: IPatch[] }) => {
+  const previousPatchID = () => {
+    setSelectedPatchIndex(selectedPatchIndex - 1);
+  };
+
+  const nextPatchID = () => {
+    setSelectedPatchIndex(selectedPatchIndex + 1);
+  };
+
+  const [selectedPatchIndex, setSelectedPatchIndex] = useState<number>(
+    patches.length - 1
+  );
+
+  const selectedPatch = patches[selectedPatchIndex];
+
   if (!selectedPatch) return <>Parche no seleccionado</>;
 
   return (
     <>
       <PatchTitle>
-        <StyledPatchSelectorArrow onClick={onPreviousPatchID}>
-          {'<'}
-        </StyledPatchSelectorArrow>
+        <StyledPatchSelectorArrowContainer>
+          {patches[selectedPatchIndex - 1] && (
+            <StyledPatchSelectorArrow onClick={previousPatchID}>
+              {'<'}
+            </StyledPatchSelectorArrow>
+          )}
+        </StyledPatchSelectorArrowContainer>
 
         {`Parche ${selectedPatch.name}`}
 
-        <StyledPatchSelectorArrow onClick={onNextPatchID}>
-          {'>'}
-        </StyledPatchSelectorArrow>
+        <StyledPatchSelectorArrowContainer>
+          {patches[selectedPatchIndex + 1] && (
+            <StyledPatchSelectorArrow onClick={nextPatchID}>
+              {'>'}
+            </StyledPatchSelectorArrow>
+          )}
+        </StyledPatchSelectorArrowContainer>
       </PatchTitle>
 
       {selectedPatch.tiers.map((tier: ITier, index: number) => (
@@ -48,6 +62,13 @@ const PatchTitle: any = styled.div`
   color: white;
   font-size: 48px;
   font-weight: 700;
+  user-select: none;
+`;
+
+const StyledPatchSelectorArrowContainer = styled.div`
+  width: 40px;
+  display: grid;
+  place-items: center;
 `;
 
 const StyledPatchSelectorArrow = styled.span`

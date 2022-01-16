@@ -19,6 +19,20 @@ const patch_2_2: IPatch = {
         },
       ],
     },
+    {
+      name: 'A',
+      teams: [
+        {
+          name: 'Baaltional',
+          characters: [
+            { ...CHARACTERS.raiden },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+      ],
+    },
   ],
 };
 
@@ -34,6 +48,20 @@ const patch_2_3: IPatch = {
             { ...CHARACTERS.raiden },
             { ...CHARACTERS.xingqiu },
             { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'A',
+      teams: [
+        {
+          name: 'Xiao DPS',
+          characters: [
+            { ...CHARACTERS.xiao },
+            { ...CHARACTERS.sucrose },
+            { ...CHARACTERS.zhongli },
             { ...CHARACTERS.bennett },
           ],
         },

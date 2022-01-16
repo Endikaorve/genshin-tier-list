@@ -9,20 +9,6 @@ import { useState } from 'react';
 import fetchAllPatches from 'functions/Patch/fetchAllPatches';
 
 const Home: NextPage = ({ patches }: any) => {
-  const [selectedPatchIndex, setSelectedPatchIndex] = useState<number>(
-    patches.length - 1
-  );
-
-  const selectedPatch = patches[selectedPatchIndex];
-
-  const previousPatchID = () => {
-    setSelectedPatchIndex(selectedPatchIndex - 1);
-  };
-
-  const nextPatchID = () => {
-    setSelectedPatchIndex(selectedPatchIndex + 1);
-  };
-
   return (
     <div>
       <Head>
@@ -36,12 +22,7 @@ const Home: NextPage = ({ patches }: any) => {
       </Head>
 
       <Container>
-        <Patch
-          patches={patches}
-          selectedPatch={selectedPatch}
-          onPreviousPatchID={previousPatchID}
-          onNextPatchID={nextPatchID}
-        />
+        <Patch patches={patches} />
       </Container>
     </div>
   );
