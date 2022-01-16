@@ -4,22 +4,24 @@ import Head from 'next/head';
 
 import Container from 'components/atoms/Container/Container';
 import Patch from 'components/molecules/Patch/Patch';
-import { IPatch } from 'interfaces/interfaces';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import fetchPatch from 'functions/Patch/fetchPatch';
+import fetchAllPatches from 'functions/Patch/fetchAllPatches';
 
-const Home: NextPage = () => {
-  const [patch, setPatch] = useState<IPatch | undefined>(undefined);
-  const defaultPatch: string = '2-4';
+const Home: NextPage = ({ patches }: any) => {
+  const [selectedPatchIndex, setSelectedPatchIndex] = useState<number>(
+    patches.length - 1
+  );
 
-  useEffect(() => {
-    fetchPatch(defaultPatch)
-      .then((patch: IPatch | undefined) => {
-        setPatch(patch);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  const selectedPatch = patches[selectedPatchIndex];
+
+  const previousPatchID = () => {
+    setSelectedPatchIndex(selectedPatchIndex - 1);
+  };
+
+  const nextPatchID = () => {
+    setSelectedPatchIndex(selectedPatchIndex + 1);
+  };
 
   return (
     <div>
@@ -34,10 +36,20 @@ const Home: NextPage = () => {
       </Head>
 
       <Container>
-        <Patch patch={patch} />
+        <Patch
+          patches={patches}
+          selectedPatch={selectedPatch}
+          onPreviousPatchID={previousPatchID}
+          onNextPatchID={nextPatchID}
+        />
       </Container>
     </div>
   );
+};
+
+Home.getInitialProps = async () => {
+  const patches = await fetchAllPatches();
+  return { patches: patches };
 };
 
 export default Home;

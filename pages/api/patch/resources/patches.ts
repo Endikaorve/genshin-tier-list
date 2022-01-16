@@ -2,6 +2,46 @@ import { IPatch } from 'interfaces/interfaces';
 
 import CHARACTERS from 'pages/api/resources/characters';
 
+const patch_2_2: IPatch = {
+  name: '2.2',
+  tiers: [
+    {
+      name: 'S',
+      teams: [
+        {
+          name: 'Xiao DPS',
+          characters: [
+            { ...CHARACTERS.xiao },
+            { ...CHARACTERS.sucrose },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const patch_2_3: IPatch = {
+  name: '2.3',
+  tiers: [
+    {
+      name: 'S',
+      teams: [
+        {
+          name: 'Baaltional',
+          characters: [
+            { ...CHARACTERS.raiden },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 const patch_2_4: IPatch = {
   name: '2.4',
   tiers: [
@@ -124,6 +164,6 @@ const patch_2_4: IPatch = {
   ],
 };
 
-const PATCHES: IPatch[] = [patch_2_4];
+const PATCHES: IPatch[] = [patch_2_2, patch_2_3, patch_2_4];
 
 export default PATCHES;

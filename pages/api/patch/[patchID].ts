@@ -14,13 +14,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const getPatchData = (patchID: string): IPatch | undefined => {
-  const formatedPatchID = formatPatchID(patchID);
-
-  return PATCHES.find((patch: IPatch) => patch.name === formatedPatchID);
-};
-
-const formatPatchID = (patch: string): string => {
-  return patch.replace('-', '.');
+  return PATCHES.find((patch: IPatch) => patch.name === patchID);
 };
 
 export default handler;
