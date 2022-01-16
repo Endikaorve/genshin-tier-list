@@ -4,9 +4,8 @@ import Head from 'next/head';
 
 import Container from 'components/atoms/Container/Container';
 import Patch from 'components/molecules/Patch/Patch';
-import { useState } from 'react';
 
-import fetchAllPatches from 'functions/Patch/fetchAllPatches';
+import fetchAllPatches from 'services/patch/fetchAllPatches';
 
 const Home: NextPage = ({ patches }: any) => {
   return (
