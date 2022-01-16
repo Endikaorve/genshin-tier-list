@@ -21,10 +21,10 @@ const TeamModal = ({
         team={team}
         isCenter={true}
         isBox={false}
+        isClickable={false}
         showTitle={false}
         characterSize={130}
         characterShowAlternatives={false}
-        characterShowHover={false}
       ></Team>
 
       <StyledCharacterAlternativesContainer>

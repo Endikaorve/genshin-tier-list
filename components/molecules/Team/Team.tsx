@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import CharacterCard from '../CharacterCard/CharacterCard';
 import TeamModal from './TeamModal/TeamModal';
 
-import { hideBodyScrollbar, showBodyScrollbar } from 'utils/utils';
 import { ICharacter, ITeam } from 'interfaces/interfaces';
 
 const Team = ({
@@ -12,41 +11,41 @@ const Team = ({
   showTitle = true,
   isCenter = false,
   isBox = true,
+  isClickable = true,
   characterSize,
   characterShowAlternatives = true,
-  characterShowHover = true,
 }: {
   team: ITeam;
   showTitle?: boolean;
   isCenter?: boolean;
   isBox?: boolean;
+  isClickable?: boolean;
   characterSize: number;
   characterShowAlternatives?: boolean;
-  characterShowHover?: boolean;
 }) => {
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [isTeamaModalShown, setIsTeamaModalShown] = useState(false);
 
-  const showModal = () => {
-    hideBodyScrollbar();
-    setIsModalShown(true);
-  };
-
-  const hideModal = () => {
-    showBodyScrollbar();
-    setIsModalShown(false);
-  };
-
-  const handleClickTeam = (e: MouseEvent) => {
+  const handleClickTeamContainer = (e: MouseEvent) => {
     e.preventDefault();
-    showModal();
+    showTeamModal();
+  };
+
+  const showTeamModal = () => {
+    if (!isClickable) return;
+    setIsTeamaModalShown(true);
+  };
+
+  const hideTeamModal = () => {
+    setIsTeamaModalShown(false);
   };
 
   return (
     <>
       <TeamContainer
         onClick={(e: MouseEvent) => {
-          handleClickTeam(e);
+          handleClickTeamContainer(e);
         }}
+        isClickable={isClickable}
       >
         <TeamCharactersContainer isCenter={isCenter} isBox={isBox}>
           {team.characters.map((character: ICharacter, index: number) => (
@@ -55,17 +54,18 @@ const Team = ({
               character={character}
               size={characterSize}
               showAlternatives={characterShowAlternatives}
-              showHover={characterShowHover}
+              showHover={isClickable}
             />
           ))}
         </TeamCharactersContainer>
 
         {showTitle && <TeamTitle>{team.name}</TeamTitle>}
       </TeamContainer>
+
       <TeamModal
         team={team}
-        isShown={isModalShown}
-        hideModal={hideModal}
+        isShown={isTeamaModalShown}
+        hideModal={() => hideTeamModal()}
       ></TeamModal>
     </>
   );
@@ -80,11 +80,13 @@ const TeamContainer = styled.div`
   border-radius: var(--border-radius);
   background-color: rgba(48, 48, 48);
   overflow: hidden;
-  cursor: pointer;
+  cursor: ${({ isClickable }: { isClickable: boolean }) =>
+    isClickable ? `pointer` : 'default'};
   transition: 0.2s;
 
   &:hover {
-    background-color: rgba(72, 72, 72);
+    background-color: ${({ isClickable }: { isClickable: boolean }) =>
+      isClickable ? `background-color: rgba(72, 72, 72)` : ''};
   }
 `;
 
