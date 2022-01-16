@@ -2,24 +2,31 @@ import styled from 'styled-components';
 
 const Modal = ({
   isShown,
+  onHideModal,
   title,
   children,
-  onHideModal,
   preventBackdropClick = false,
 }: {
   isShown: boolean;
+  onHideModal: any;
   title: string;
   children: any;
-  onHideModal: any;
   preventBackdropClick?: boolean;
 }) => {
   const handleClickHide = (e: any) => {
     if (e.currentTarget !== e.target || preventBackdropClick) return;
 
+    hideModal();
+  };
+
+  const hideModal = () => {
+    showBodyScrollbar();
     onHideModal();
   };
 
   if (!isShown) return null;
+
+  hideBodyScrollbar();
 
   return (
     <StyledModal>
@@ -27,7 +34,7 @@ const Modal = ({
         <ModalContainer>
           <ModalHeader>
             {title}
-            <ModalCloseButton onClick={() => onHideModal()}>
+            <ModalCloseButton onClick={() => hideModal()}>
               &times;
             </ModalCloseButton>
           </ModalHeader>
@@ -36,6 +43,14 @@ const Modal = ({
       </StyledModalDialog>
     </StyledModal>
   );
+};
+
+const hideBodyScrollbar = () => {
+  document.body.classList.add('modal-open');
+};
+
+const showBodyScrollbar = () => {
+  document.body.classList.remove('modal-open');
 };
 
 export default Modal;
