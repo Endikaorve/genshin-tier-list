@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 import Container from 'components/atoms/Container/Container';
 import Patch from 'components/molecules/Patch/Patch';
+import ScreenshotFab from 'components/atoms/SreenshotFab/ScreenshotFab';
 
 import fetchAllPatches from 'services/patch/fetchAllPatches';
 
@@ -22,6 +23,7 @@ const Home: NextPage = ({ patches }: any) => {
 
       <Container>
         <Patch patches={patches} />
+        <ScreenshotFab></ScreenshotFab>
       </Container>
     </div>
   );
