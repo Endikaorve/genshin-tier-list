@@ -40,7 +40,7 @@ const TierTitle: any = styled.div`
 const TierTeamsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   margin: var(--space-md);
   padding: var(--space-md);
   background: rgba(24, 24, 24);
