@@ -59,6 +59,8 @@ const StyledScreenshotFab = styled.button`
   border: none;
   cursor: pointer;
 
+  opacity: 0;
+
   &:hover {
     background-color: #fe6767;
   }
