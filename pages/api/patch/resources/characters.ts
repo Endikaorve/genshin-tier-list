@@ -34,6 +34,7 @@ const CHARACTERS = {
   fischl: { name: 'Fischl', element: 'electro' } as ICharacter,
   keqing: { name: 'Keqing', element: 'electro' } as ICharacter,
   raiden: { name: 'Raiden', element: 'electro' } as ICharacter,
+  razor: { name: 'Razor', element: 'electro' } as ICharacter,
   sara: { name: 'sara', element: 'electro' } as ICharacter,
   yae: { name: 'Yae', element: 'electro' } as ICharacter,
 
@@ -42,6 +43,7 @@ const CHARACTERS = {
   gorou: { name: 'Gorou', element: 'geo' } as ICharacter,
   itto: { name: 'Itto', element: 'geo' } as ICharacter,
   ningguang: { name: 'Ningguang', element: 'geo' } as ICharacter,
+  noelle: { name: 'Noelle', element: 'geo' } as ICharacter,
   zhongli: { name: 'Zhongli', element: 'geo' } as ICharacter,
 };
 

@@ -55,6 +55,15 @@ const patch_2_4: IPatch = {
         //   ],
         // },
         {
+          name: 'Mono Pyro',
+          characters: [
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+            { ...CHARACTERS.kazuha },
+            { ...CHARACTERS.venti },
+          ],
+        },
+        {
           name: 'International',
           characters: [
             { ...CHARACTERS.tartaglia },
@@ -67,11 +76,23 @@ const patch_2_4: IPatch = {
           ],
         },
         {
-          name: 'Baaltional',
+          name: 'Sucrose Taser',
+          characters: [
+            { ...CHARACTERS.sucrose },
+            {
+              ...CHARACTERS.xingqiu,
+              alternatives: [CHARACTERS.kokomi],
+            },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.beidou },
+          ],
+        },
+        {
+          name: 'Raiden DPS',
           characters: [
             { ...CHARACTERS.raiden },
-            { ...CHARACTERS.xingqiu },
-            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.sara },
+            { ...CHARACTERS.kazuha },
             { ...CHARACTERS.bennett },
           ],
         },
@@ -93,12 +114,30 @@ const patch_2_4: IPatch = {
       name: 'A',
       teams: [
         {
+          name: 'Baaltional',
+          characters: [
+            { ...CHARACTERS.raiden },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+        {
           name: 'Ganyu Melt',
           characters: [
             { ...CHARACTERS.ganyu },
             { ...CHARACTERS.zhongli },
             { ...CHARACTERS.xiangling },
             { ...CHARACTERS.bennett },
+          ],
+        },
+        {
+          name: 'Zhongli Taser',
+          characters: [
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.beidou },
           ],
         },
         {
@@ -146,33 +185,6 @@ const patch_2_4: IPatch = {
             { ...CHARACTERS.gorou },
           ],
         },
-        {
-          name: 'Raiden DPS',
-          characters: [
-            { ...CHARACTERS.raiden },
-            { ...CHARACTERS.sara },
-            { ...CHARACTERS.kazuha },
-            { ...CHARACTERS.bennett },
-          ],
-        },
-        {
-          name: 'Zhongli Taser',
-          characters: [
-            { ...CHARACTERS.zhongli },
-            { ...CHARACTERS.xingqiu },
-            { ...CHARACTERS.fischl },
-            { ...CHARACTERS.beidou },
-          ],
-        },
-        {
-          name: 'Mono Pyro',
-          characters: [
-            { ...CHARACTERS.xiangling },
-            { ...CHARACTERS.bennett },
-            { ...CHARACTERS.kazuha },
-            { ...CHARACTERS.venti },
-          ],
-        },
       ],
     },
     {
@@ -203,6 +215,15 @@ const patch_2_4: IPatch = {
             { ...CHARACTERS.rosaria },
             { ...CHARACTERS.raiden },
             { ...CHARACTERS.zhongli },
+          ],
+        },
+        {
+          name: 'Noelle DPS',
+          characters: [
+            { ...CHARACTERS.noelle },
+            { ...CHARACTERS.albedo },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.gorou },
           ],
         },
         {
@@ -237,6 +258,20 @@ const patch_2_4: IPatch = {
             { ...CHARACTERS.zhongli },
           ],
         },
+        {
+          name: 'Razor DPS',
+          characters: [
+            { ...CHARACTERS.razor },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.kaeya },
+            { ...CHARACTERS.zhongli },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Oselin',
+      teams: [
         {
           name: 'Keqing DPS',
           characters: [
