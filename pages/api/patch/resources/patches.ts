@@ -1,74 +1,6 @@
 import { IPatch } from 'interfaces/interfaces';
 
-import CHARACTERS from 'pages/api/resources/characters';
-
-const patch_2_2: IPatch = {
-  name: '2.2',
-  tiers: [
-    {
-      name: 'S',
-      teams: [
-        {
-          name: 'Xiao DPS',
-          characters: [
-            { ...CHARACTERS.xiao },
-            { ...CHARACTERS.sucrose },
-            { ...CHARACTERS.zhongli },
-            { ...CHARACTERS.bennett },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'A',
-      teams: [
-        {
-          name: 'Baaltional',
-          characters: [
-            { ...CHARACTERS.raiden },
-            { ...CHARACTERS.xingqiu },
-            { ...CHARACTERS.xiangling },
-            { ...CHARACTERS.bennett },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-const patch_2_3: IPatch = {
-  name: '2.3',
-  tiers: [
-    {
-      name: 'S',
-      teams: [
-        {
-          name: 'Baaltional',
-          characters: [
-            { ...CHARACTERS.raiden },
-            { ...CHARACTERS.xingqiu },
-            { ...CHARACTERS.xiangling },
-            { ...CHARACTERS.bennett },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'A',
-      teams: [
-        {
-          name: 'Xiao DPS',
-          characters: [
-            { ...CHARACTERS.xiao },
-            { ...CHARACTERS.sucrose },
-            { ...CHARACTERS.zhongli },
-            { ...CHARACTERS.bennett },
-          ],
-        },
-      ],
-    },
-  ],
-};
+import CHARACTERS from 'pages/api/patch/resources/characters';
 
 const patch_2_4: IPatch = {
   name: '2.4',
@@ -76,21 +8,6 @@ const patch_2_4: IPatch = {
     {
       name: 'S',
       teams: [
-        {
-          name: 'Morgana',
-          characters: [
-            { ...CHARACTERS.ganyu },
-            {
-              ...CHARACTERS.ayaka,
-              alternatives: [CHARACTERS.shenhe, CHARACTERS.diona],
-            },
-            { ...CHARACTERS.venti },
-            {
-              ...CHARACTERS.mona,
-              alternatives: [CHARACTERS.kokomi],
-            },
-          ],
-        },
         {
           name: 'Ayaka Freeze',
           characters: [
@@ -114,17 +31,29 @@ const patch_2_4: IPatch = {
           ],
         },
         {
-          name: 'Hu Tao Vape',
+          name: 'Morgana',
           characters: [
-            { ...CHARACTERS.hutao },
-            { ...CHARACTERS.xingqiu },
-            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.ganyu },
             {
-              ...CHARACTERS.fischl,
-              alternatives: [CHARACTERS.albedo],
+              ...CHARACTERS.ayaka,
+              alternatives: [CHARACTERS.shenhe, CHARACTERS.diona],
+            },
+            { ...CHARACTERS.venti },
+            {
+              ...CHARACTERS.mona,
+              alternatives: [CHARACTERS.kokomi],
             },
           ],
         },
+        // {
+        //   name: 'Yae DPS',
+        //   characters: [
+        //     { ...CHARACTERS.yae },
+        //     { ...CHARACTERS.raiden },
+        //     { ...CHARACTERS.kazuha },
+        //     { ...CHARACTERS.kokomi },
+        //   ],
+        // },
         {
           name: 'International',
           characters: [
@@ -137,11 +66,6 @@ const patch_2_4: IPatch = {
             { ...CHARACTERS.bennett },
           ],
         },
-      ],
-    },
-    {
-      name: 'A',
-      teams: [
         {
           name: 'Baaltional',
           characters: [
@@ -152,12 +76,38 @@ const patch_2_4: IPatch = {
           ],
         },
         {
-          name: 'Mono Pyro',
+          name: 'Hu Tao Vape',
+          characters: [
+            { ...CHARACTERS.hutao },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.zhongli },
+            {
+              ...CHARACTERS.fischl,
+              alternatives: [CHARACTERS.albedo],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'A',
+      teams: [
+        {
+          name: 'Ganyu Melt',
+          characters: [
+            { ...CHARACTERS.ganyu },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+        {
+          name: 'National',
           characters: [
             { ...CHARACTERS.xiangling },
             { ...CHARACTERS.bennett },
-            { ...CHARACTERS.kazuha },
-            { ...CHARACTERS.venti },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.sucrose },
           ],
         },
         {
@@ -170,11 +120,38 @@ const patch_2_4: IPatch = {
           ],
         },
         {
+          name: 'Sukokomon',
+          characters: [
+            { ...CHARACTERS.sucrose },
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.kokomi },
+          ],
+        },
+        {
           name: 'Xiao DPS',
           characters: [
             { ...CHARACTERS.xiao },
             { ...CHARACTERS.sucrose },
             { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+        {
+          name: 'Itto DPS',
+          characters: [
+            { ...CHARACTERS.itto },
+            { ...CHARACTERS.albedo },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.gorou },
+          ],
+        },
+        {
+          name: 'Raiden DPS',
+          characters: [
+            { ...CHARACTERS.raiden },
+            { ...CHARACTERS.sara },
+            { ...CHARACTERS.kazuha },
             { ...CHARACTERS.bennett },
           ],
         },
@@ -187,11 +164,93 @@ const patch_2_4: IPatch = {
             { ...CHARACTERS.beidou },
           ],
         },
+        {
+          name: 'Mono Pyro',
+          characters: [
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+            { ...CHARACTERS.kazuha },
+            { ...CHARACTERS.venti },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'B',
+      teams: [
+        {
+          name: 'HuTao Melt',
+          characters: [
+            { ...CHARACTERS.hutao },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.kaeya },
+            { ...CHARACTERS.diona },
+          ],
+        },
+        {
+          name: 'Diluc DPS',
+          characters: [
+            { ...CHARACTERS.diluc },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+        {
+          name: 'Eula DPS',
+          characters: [
+            { ...CHARACTERS.eula },
+            { ...CHARACTERS.rosaria },
+            { ...CHARACTERS.raiden },
+            { ...CHARACTERS.zhongli },
+          ],
+        },
+        {
+          name: 'F2P Reverse Melt',
+          characters: [
+            { ...CHARACTERS.xiangling },
+            { ...CHARACTERS.bennett },
+            { ...CHARACTERS.rosaria },
+            { ...CHARACTERS.kaeya },
+          ],
+        },
+        {
+          name: 'Ningguang DPS',
+          characters: [
+            { ...CHARACTERS.ningguang },
+            { ...CHARACTERS.zhongli },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.bennett },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'C',
+      teams: [
+        {
+          name: 'Yoimiya DPS',
+          characters: [
+            { ...CHARACTERS.yoimiya },
+            { ...CHARACTERS.bennett },
+            { ...CHARACTERS.xingqiu },
+            { ...CHARACTERS.zhongli },
+          ],
+        },
+        {
+          name: 'Keqing DPS',
+          characters: [
+            { ...CHARACTERS.keqing },
+            { ...CHARACTERS.fischl },
+            { ...CHARACTERS.kazuha },
+            { ...CHARACTERS.kokomi },
+          ],
+        },
       ],
     },
   ],
 };
 
-const PATCHES: IPatch[] = [patch_2_2, patch_2_3, patch_2_4];
+const PATCHES: IPatch[] = [patch_2_4];
 
 export default PATCHES;
