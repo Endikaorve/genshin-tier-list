@@ -57,6 +57,7 @@ const PatchTitle: any = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: var(--space-xl);
   padding: var(--space-xl);
   color: white;

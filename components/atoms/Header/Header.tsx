@@ -18,4 +18,8 @@ const StyledHeader = styled.header`
 
 const StyledHeaderLogoImg = styled.img`
   width: 350px;
+
+  @media (max-width: 576px) {
+    width: 220px;
+  }
 `;
