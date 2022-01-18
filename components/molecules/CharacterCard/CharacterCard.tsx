@@ -15,7 +15,7 @@ const CharacterCard = ({
   showHover: boolean;
 }) => {
   const { name, element, alternatives } = character;
-  const characterSrc: string = `/assets/images/characters/${name}.png`;
+  const characterSrc: string = `/assets/images/characters/${name.toLowerCase()}.png`;
   const elementSrc = `/assets/images/elements/${element}.png`;
 
   return (

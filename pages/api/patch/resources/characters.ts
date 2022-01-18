@@ -35,7 +35,7 @@ const CHARACTERS = {
   keqing: { name: 'Keqing', element: 'electro' } as ICharacter,
   raiden: { name: 'Raiden', element: 'electro' } as ICharacter,
   razor: { name: 'Razor', element: 'electro' } as ICharacter,
-  sara: { name: 'sara', element: 'electro' } as ICharacter,
+  sara: { name: 'Sara', element: 'electro' } as ICharacter,
   yae: { name: 'Yae', element: 'electro' } as ICharacter,
 
   // GEO
