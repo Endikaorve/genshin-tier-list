@@ -20,7 +20,7 @@ const TeamModal = ({
       <Team
         team={team}
         isCenter={true}
-        isBox={false}
+        isBox={true}
         isClickable={false}
         showTitle={false}
         characterSize={130}
@@ -74,10 +74,12 @@ export default TeamModal;
 
 const StyledCharacterAlternativesContainer = styled.div`
   padding: var(--space-lg);
+  padding-top: var(--space-xl);
 `;
 
 const StyledCharacterAlternative = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-md);
 

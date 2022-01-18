@@ -40,9 +40,13 @@ const TierTitle: any = styled.div`
 const TierTeamsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
+
   margin: var(--space-md);
   padding: var(--space-md);
   background: rgba(24, 24, 24);
   gap: var(--space-lg);
+
+  @media (max-width: 1211px) {
+    justify-content: center;
+  }
 `;
