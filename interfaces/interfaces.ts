@@ -15,6 +15,8 @@ export interface ITeam {
 export interface ICharacter {
   name: string;
   element: ICharacterElement;
+  sets?: ICharacterSet[];
+  stats?: ICharacterStats;
   alternatives?: ICharacter[];
 }
 
@@ -26,3 +28,18 @@ export type ICharacterElement =
   | 'geo'
   | 'anemo'
   | 'dendro';
+
+export interface ISet {
+  name: string;
+  src: string;
+}
+
+export interface ICharacterSet {
+  set1: ISet;
+  set2?: ISet;
+}
+export interface ICharacterStats {
+  sands: string;
+  goblet: string;
+  circlet: string;
+}

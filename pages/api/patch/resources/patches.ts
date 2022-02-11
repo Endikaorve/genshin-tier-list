@@ -1,6 +1,7 @@
 import { IPatch } from 'interfaces/interfaces';
 
 import CHARACTERS from 'pages/api/patch/resources/characters';
+import SETS from 'pages/api/patch/resources/sets';
 
 const patch_2_4: IPatch = {
   name: '2.4',
@@ -11,9 +12,39 @@ const patch_2_4: IPatch = {
         {
           name: 'Ayaka Freeze',
           characters: [
-            { ...CHARACTERS.ayaka },
+            {
+              ...CHARACTERS.ayaka,
+              sets: [
+                { set1: SETS.blizzardStrayer, set2: SETS.blizzardStrayer },
+                { set1: SETS.blizzardStrayer, set2: SETS.gladiatorsFinale },
+                {
+                  set1: SETS.blizzardStrayer,
+                  set2: SETS.shimenawasReminiscence,
+                },
+              ],
+              stats: {
+                sands: 'ATK%',
+                goblet: 'Cryo',
+                circlet: 'CD - ATK%',
+              },
+            },
             {
               ...CHARACTERS.shenhe,
+              sets: [
+                {
+                  set1: SETS.noblesseOblige,
+                  set2: SETS.noblesseOblige,
+                },
+                {
+                  set1: SETS.gladiatorsFinale,
+                  set2: SETS.shimenawasReminiscence,
+                },
+              ],
+              stats: {
+                sands: 'ATK% - ER%',
+                goblet: 'ATK%',
+                circlet: 'ATK%',
+              },
               alternatives: [
                 CHARACTERS.diona,
                 CHARACTERS.rosaria,
@@ -22,10 +53,36 @@ const patch_2_4: IPatch = {
             },
             {
               ...CHARACTERS.kazuha,
+              sets: [
+                {
+                  set1: SETS.viridescentVenerer,
+                  set2: SETS.viridescentVenerer,
+                },
+              ],
+              stats: {
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+              },
               alternatives: [CHARACTERS.venti],
             },
             {
               ...CHARACTERS.kokomi,
+              sets: [
+                {
+                  set1: SETS.oceanHuedClam,
+                  set2: SETS.oceanHuedClam,
+                },
+                {
+                  set1: SETS.tenacityOfTheMillelith,
+                  set2: SETS.tenacityOfTheMillelith,
+                },
+              ],
+              stats: {
+                sands: 'ER% - HP%',
+                goblet: 'HP%',
+                circlet: 'Heal',
+              },
               alternatives: [CHARACTERS.xingqiu, CHARACTERS.mona],
             },
           ],
